@@ -1,6 +1,5 @@
 {
-  "name": "@repo/typescript-config",
-  "version": "0.0.0",
+  "name": "@saas/tsconfig",
   "private": true,
   "license": "MIT",
   "publishConfig": {
