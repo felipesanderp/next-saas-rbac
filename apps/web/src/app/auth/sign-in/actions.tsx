@@ -9,7 +9,7 @@ const api = ky.create({
 export async function signInWithEmailAndPassword(data: FormData) {
   const { email, password } = Object.fromEntries(data)
 
-  const result = api
+  const result = await api
     .post('sessions/password', {
       json: {
         email,
