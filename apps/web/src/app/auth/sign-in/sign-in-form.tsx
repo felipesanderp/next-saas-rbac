@@ -16,7 +16,7 @@ import { signInWithEmailAndPassword } from './actions'
 export function SignInForm() {
   const [state, formAction, isPending] = useActionState(
     signInWithEmailAndPassword,
-    null,
+    { success: false, message: null, errors: null },
   )
 
   return (
