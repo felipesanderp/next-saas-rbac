@@ -4,10 +4,12 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
+  CardTitle,
 } from '@/components/ui/card'
 import { getOrganization } from '@/http/get-organization'
 
 import { OrganizationForm } from '../../organization-form'
+import Billing from './billing'
 import { ShutdownOrganizationButton } from './shutdown-organization-button'
 
 export default async function Settings() {
@@ -43,15 +45,17 @@ export default async function Settings() {
           </Card>
         )}
 
-        {canGetBilling && <div>billing</div>}
+        {canGetBilling && <Billing />}
 
         {canShutdownOrganization && (
           <Card>
-            <CardHeader>Shutdown Organization</CardHeader>
-            <CardDescription>
-              This will delete all organization data including all projects. You
-              cannot undo this action.
-            </CardDescription>
+            <CardHeader>
+              <CardTitle>Shutdown Organization</CardTitle>
+              <CardDescription>
+                This will delete all organization data including all projects.
+                You cannot undo this action.
+              </CardDescription>
+            </CardHeader>
             <CardContent>
               <ShutdownOrganizationButton />
             </CardContent>
