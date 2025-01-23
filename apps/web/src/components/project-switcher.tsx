@@ -1,5 +1,6 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import { ChevronsUpDown, Loader2, PlusCircle } from 'lucide-react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -16,24 +17,24 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
-import { useQuery } from "@tanstack/react-query"
-import { Skeleton } from "./ui/skeleton"
+import { Skeleton } from './ui/skeleton'
 
 export function ProjectSwitcher() {
   const { slug: orgSlug, project: projectSlug } = useParams<{
-    slug: string,
+    slug: string
     project: string
   }>()
 
   const { data, isLoading } = useQuery({
-    queryKey:[orgSlug, 'projects'] ,
+    queryKey: [orgSlug, 'projects'],
     queryFn: () => getProjects(orgSlug),
-    enabled: !!orgSlug
+    enabled: !!orgSlug,
   })
 
-  const currentProject = data && projectSlug && data.projects.find(
-    (project) => project.slug === projectSlug,
-  )
+  const currentProject =
+    data &&
+    projectSlug &&
+    data.projects.find((project) => project.slug === projectSlug)
 
   return (
     <DropdownMenu>
@@ -62,11 +63,11 @@ export function ProjectSwitcher() {
             )}
           </>
         )}
-        
+
         {isLoading ? (
           <Loader2 className="animate-spin" />
         ) : (
-         <ChevronsUpDown className="ml-auto size-4 text-muted-foreground shrink-0" />
+          <ChevronsUpDown className="ml-auto size-4 shrink-0 text-muted-foreground" />
         )}
       </DropdownMenuTrigger>
       <DropdownMenuContent
@@ -77,21 +78,22 @@ export function ProjectSwitcher() {
       >
         <DropdownMenuGroup>
           <DropdownMenuLabel>Organizations</DropdownMenuLabel>
-          {data && data.projects.map((project) => {
-            return (
-          <DropdownMenuItem key={project.id} asChild>
-            <Link href={`/org/${orgSlug}/project/${project.slug}`}>
-              <Avatar className="mr-2 size-4">
-                {project.avatarUrl && (
-                  <AvatarImage src={project.avatarUrl} />
-                )}
-                <AvatarFallback />
-              </Avatar>
-              <span className="line-clamp-1">{project.name}</span>
-            </Link>
-          </DropdownMenuItem>
-          )
-          })}
+          {data &&
+            data.projects.map((project) => {
+              return (
+                <DropdownMenuItem key={project.id} asChild>
+                  <Link href={`/org/${orgSlug}/project/${project.slug}`}>
+                    <Avatar className="mr-2 size-4">
+                      {project.avatarUrl && (
+                        <AvatarImage src={project.avatarUrl} />
+                      )}
+                      <AvatarFallback />
+                    </Avatar>
+                    <span className="line-clamp-1">{project.name}</span>
+                  </Link>
+                </DropdownMenuItem>
+              )
+            })}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
