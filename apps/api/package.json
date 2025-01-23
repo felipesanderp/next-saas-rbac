@@ -2,6 +2,8 @@
   "name": "@saas/api",
   "version": "1.0.0",
   "scripts": {
+    "build": "tsup",
+    "start": "node dist/http/server.js",
     "dev": "pnpm env:load tsx watch src/http/server.ts",
     "db:migrate": "pnpm env:load prisma migrate dev",
     "db:studio": "pnpm env:load prisma studio",
@@ -30,6 +32,7 @@
     "@types/node": "^20.12.7",
     "dotenv-cli": "^7.4.1",
     "prisma": "^5.13.0",
+    "tsup": "^8.3.5",
     "tsx": "^4.7.2"
   },
   "prisma": {
