@@ -17,8 +17,7 @@ export async function signInWithGithub() {
 }
 export async function signInWithMicrosoft() {
   const microsoftSignInURL = new URL(
-    `${env.AUTH_MICROSOFT_ENTRA_ID_TENANT}/oauth2/v2.0/authorize`,
-    'https://login.microsoftonline.com',
+    'https://login.microsoftonline.com/8809886d-b66e-4978-b202-ec67fb73367f/oauth2/v2.0/authorize',
   )
 
   microsoftSignInURL.searchParams.set(

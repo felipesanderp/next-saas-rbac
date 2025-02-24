@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
-// import { signInWithGithub } from '@/http/sign-in-with-github'
+import { signInWithMicrosoft } from '@/http/sign-in-with-microsoft'
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
@@ -17,9 +17,9 @@ export async function GET(request: NextRequest) {
     )
   }
 
-  // const { token } = await signInWithGithub({ code })
+  const { token } = await signInWithMicrosoft({ code })
 
-  cookies().set('code', code, {
+  cookies().set('token', token, {
     path: '/',
     maxAge: 60 * 60 * 24 * 7, // 7days
   })

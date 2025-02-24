@@ -49,6 +49,7 @@ model Token {
 
 enum AccountProvider {
   GITHUB
+  MICROSOFT
 }
 
 model Account {

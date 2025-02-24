@@ -42,6 +42,8 @@ import { getProject } from '@/http/routes/projects/get-project'
 import { getProjects } from '@/http/routes/projects/get-projects'
 import { updateProject } from '@/http/routes/projects/update-project'
 
+import { authenticateWithMicrosoft } from './routes/auth/authenticate-with-microsoft'
+
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 app.setSerializerCompiler(serializerCompiler)
@@ -85,6 +87,7 @@ app.register(getProfile)
 app.register(requestPasswordRecover)
 app.register(resetPassword)
 app.register(authenticateWithGithub)
+app.register(authenticateWithMicrosoft)
 
 app.register(createOrganization)
 app.register(getMembership)
