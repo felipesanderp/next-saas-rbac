@@ -11,6 +11,11 @@ export const env = createEnv({
     GITHUB_OAUTH_CLIENT_ID: z.string(),
     GITHUB_OAUTH_CLIENT_SECRET: z.string(),
     GITHUB_OAUTH_CLIENT_REDIRECT_URI: z.string().url(),
+
+    AUTH_MICROSOFT_ENTRA_ID_CLIENT_ID: z.string(),
+    AUTH_MICROSOFT_ENTRA_ID_SECRET: z.string(),
+    AUTH_MICROSOFT_ENTRA_ID_TENANT: z.string(),
+    AUTH_MICROSOFT_ENTRA_ID_REDIRECT_URI: z.string().url(),
   },
   client: {},
   shared: {
@@ -25,6 +30,13 @@ export const env = createEnv({
     GITHUB_OAUTH_CLIENT_REDIRECT_URI:
       process.env.GITHUB_OAUTH_CLIENT_REDIRECT_URI,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+
+    AUTH_MICROSOFT_ENTRA_ID_CLIENT_ID:
+      process.env.AUTH_MICROSOFT_ENTRA_ID_CLIENT_ID,
+    AUTH_MICROSOFT_ENTRA_ID_SECRET: process.env.AUTH_MICROSOFT_ENTRA_ID_SECRET,
+    AUTH_MICROSOFT_ENTRA_ID_TENANT: process.env.AUTH_MICROSOFT_ENTRA_ID_TENANT,
+    AUTH_MICROSOFT_ENTRA_ID_REDIRECT_URI:
+      process.env.AUTH_MICROSOFT_ENTRA_ID_REDIRECT_URI,
   },
   emptyStringAsUndefined: true,
 })

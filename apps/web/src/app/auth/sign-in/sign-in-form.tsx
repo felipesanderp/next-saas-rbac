@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import githubIcon from '@/assets/github-icon.svg'
+import microsoftIcon from '@/assets/microsoft-icon.svg'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -13,7 +14,7 @@ import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { useFormState } from '@/hooks/use-form-state'
 
-import { signInWithGithub } from '../actions'
+import { signInWithGithub, signInWithMicrosoft } from '../actions'
 import { signInWithEmailAndPassword } from './actions'
 
 export function SignInForm() {
@@ -97,6 +98,16 @@ export function SignInForm() {
         <Button type="submit" className="w-full" variant="outline">
           <Image src={githubIcon} alt="" className="mr-2 size-4 dark:invert" />
           Sign in with GitHub
+        </Button>
+      </form>
+      <form action={signInWithMicrosoft}>
+        <Button type="submit" className="w-full" variant="outline">
+          <Image
+            src={microsoftIcon}
+            alt=""
+            className="mr-2 size-4 dark:invert"
+          />
+          Sign in with Microsoft
         </Button>
       </form>
     </div>
