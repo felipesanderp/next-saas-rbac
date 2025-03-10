@@ -66,19 +66,6 @@ export async function authenticateWithMicrosoft(app: FastifyInstance) {
         },
       )
 
-      // const userProfilePhoto = fetch(
-      //   'https://graph.microsoft.com/v1.0/me/photos/48x48/$value',
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${microsoftAccessToken}`,
-      //     },
-      //   },
-      // )
-
-      // const avatarUrl = await userProfilePhoto
-
-      // console.log(avatarUrl)
-
       const microsoftUserData = await microsoftUserResponse.json()
 
       const {
